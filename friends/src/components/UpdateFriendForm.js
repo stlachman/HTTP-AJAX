@@ -16,7 +16,7 @@ const FormInput = styled.input`
 
 const FormButton = styled.button`margin-top: 1.5rem;`;
 
-class PostFriendForm extends React.Component {
+class UpdateFriendForm extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -38,22 +38,16 @@ class PostFriendForm extends React.Component {
     });
 	};
 
-	handleSubmit = (event) => {
-		event.preventDefault();
-    this.props.postFriend(this.state.friend)
-    // this.setState({ 
-    //   friend: {
-    //     name: '',
-    //     age: '',
-    //     email: ''
-    //   }
-    // })
-	};
+  
+  handleEdit = (event) => {
+    event.preventDefault();
+    this.props.editFriend(this.state.friend)
+  }
 
 	render() {
 		return (
-			<FormContainer>
-				<h2>Add a new friend</h2>
+			<FormContainer onSubmit={this.handleEdit}>
+				<h2>Update a friend</h2>
 				<Form onSubmit={this.handleSubmit}>
 					<FormInput
 						onChange={this.handleInputChange}
@@ -76,11 +70,11 @@ class PostFriendForm extends React.Component {
 						name="email"
 						placeholder="Add Email"
 					/>
-					<FormButton type="submit">Add Friend</FormButton>
+					<FormButton type="submit">Update Friend</FormButton>
 				</Form>
 			</FormContainer>
 		);
 	}
 }
 
-export default PostFriendForm;
+export default UpdateFriendForm;
