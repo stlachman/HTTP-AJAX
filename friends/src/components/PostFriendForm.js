@@ -41,7 +41,7 @@ class PostFriendForm extends React.Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
     this.props.postFriend(this.state.friend)
-    this.setState({
+    this.setState({ 
       friend: {
         name: '',
         age: '',
@@ -52,7 +52,7 @@ class PostFriendForm extends React.Component {
 
 	render() {
 		return (
-			<FormContainer onSubmit={this.handleSubmit}>
+			<FormContainer>
 				<h2>Add a new friend</h2>
 				<Form onSubmit={this.handleSubmit}>
 					<FormInput

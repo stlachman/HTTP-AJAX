@@ -11,7 +11,7 @@ class App extends React.Component {
 		super();
 
 		this.state = {
-			friends: []
+      friends: []
 		};
 	}
 
@@ -24,8 +24,8 @@ class App extends React.Component {
   
   postFriend = (friend) => {
     axios.post(`http://localhost:5000/friends`, friend)
-    .then(res => res)
-    .catch(err => console.log(err));
+    .then(res => this.setState({ friends: res.data }))
+    .catch(err => console.log(err))
   }
 
 	render() {
