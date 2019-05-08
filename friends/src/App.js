@@ -54,8 +54,8 @@ class App extends React.Component {
 			<div>
         <Navigation />
         <Route exact path="/" render={(props) => <FriendList {...props} friends={this.state.friends} deleteFriend={this.deleteFriend}/>}/>        
-        <Route path="/add" render={(props) => <PostFriendForm postFriend={this.postFriend} />}/>
-        <Route path="/update" render={(props) => <UpdateFriendForm editFriend={this.editFriend} />}/>
+        <Route path="/add-friend" render={(props) => <PostFriendForm postFriend={this.postFriend} />}/>
+        <Route path="/update-friend" render={(props) => <UpdateFriendForm editFriend={this.editFriend} />}/>
 			</div>
 		);
 	}
