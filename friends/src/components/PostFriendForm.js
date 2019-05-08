@@ -41,13 +41,13 @@ class PostFriendForm extends React.Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
     this.props.postFriend(this.state.friend)
-    this.setState({ 
-      friend: {
-        name: '',
-        age: '',
-        email: ''
-      }
-    })
+    // this.setState({ 
+    //   friend: {
+    //     name: '',
+    //     age: '',
+    //     email: ''
+    //   }
+    // })
 	};
 
 	render() {
@@ -76,7 +76,7 @@ class PostFriendForm extends React.Component {
 						name="email"
 						placeholder="Add Email"
 					/>
-					<FormButton>Add Friend</FormButton>
+					<FormButton type="submit">Add Friend</FormButton>
 				</Form>
 			</FormContainer>
 		);

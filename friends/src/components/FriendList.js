@@ -13,10 +13,11 @@ const Title = styled.h1`
 `;
 
 const FriendList = props => {
+  console.log(props)
   return (
     <Container>
       <Title>Friends List</Title>
-      {props.friends.map(friend => <Friend key={friend.id} friend={friend} />)}
+      {props.friends.map(friend => <Friend deleteFriend={props.deleteFriend} key={friend.id} friend={friend} />)}
     </Container>
   )
 };
