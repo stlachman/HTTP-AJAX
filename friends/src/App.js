@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
+import { Route } from 'react-router-dom';
 
+import Navigation from './components/Navigation';
 import FriendList from './components/FriendList';
 import PostFriendForm from './components/PostFriendForm';
 import UpdateFriendForm from './components/UpdateFriendForm';
@@ -50,9 +52,10 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
-        <FriendList friends={this.state.friends} deleteFriend={this.deleteFriend}/>
-        <PostFriendForm postFriend={this.postFriend} />
-        <UpdateFriendForm editFriend={this.editFriend} />
+        <Navigation />
+        <Route exact path="/" render={(props) => <FriendList {...props} friends={this.state.friends} deleteFriend={this.deleteFriend}/>}/>        
+        <Route path="/add" render={(props) => <PostFriendForm postFriend={this.postFriend} />}/>
+        <Route path="/update" render={(props) => <UpdateFriendForm editFriend={this.editFriend} />}/>
 			</div>
 		);
 	}
