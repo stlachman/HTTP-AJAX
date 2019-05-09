@@ -1,13 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import axios from 'axios';
-
-const Card = styled.div`
-	background: #eee;
-	max-width: 350px;
-	margin: 2rem auto;
-	padding: 2rem;
-`;
+import FriendCard from './FriendCard';
 
 class Friend extends React.Component {
 	state = {
@@ -32,16 +25,7 @@ class Friend extends React.Component {
 			return <h2>Loading friend data...</h2>;
 		}
 
-		return (
-			<Card>
-				<h2>Name: {friend.name}</h2>
-				<p>Age: {friend.age}</p>
-				<p>
-					Email: <a href={`mailto:${friend.email}`}>{friend.email}</a>
-				</p>
-				<button onClick={this.updateForm}>Update Friend</button>
-			</Card>
-		);
+		return <FriendCard friend={friend} updateForm={this.updateForm} />;
 	}
 }
 
