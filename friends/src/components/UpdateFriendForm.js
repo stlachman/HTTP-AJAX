@@ -3,18 +3,47 @@ import styled from 'styled-components';
 
 const FormContainer = styled.div`
 	max-width: 500px;
-	margin: 0 auto;
+	margin: 3rem auto;
 	text-align: center;
 `;
 
 const Form = styled.form`display: inline-block;`;
 
+const FormTitle = styled.h2`
+  font-size: 2rem;
+  margin-top: 0;
+`;
+
 const FormInput = styled.input`
 	display: block;
 	margin-top: 1.8rem;
+  border: 0;
+  padding: 1rem 0.5rem;
+  border-bottom: 0.25rem solid #191919;
+  color: #191919;
+  font-size: 1.5rem;
+  transition: 0.25s border cubic-bezier(0.79, 0.07, 0.42, 0.91);
+
+  &:focus {
+    outline: none;
+    border-bottom: 0.25rem solid #464646;
+  }
 `;
 
-const FormButton = styled.button`margin-top: 1.5rem;`;
+const Button = styled.button`
+	padding: 1rem 1.6rem;
+	border-radius: 0.5rem;
+	background: #eee;
+	font-size: 1.4rem;
+	font-weight: bold;
+	box-shadow: 3px 2px 2px 0px rgba(0, 0, 0, 0.3);
+  margin-top: 1.5rem;
+  
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+`;
 
 class UpdateFriendForm extends React.Component {
 	constructor(props) {
@@ -45,10 +74,9 @@ class UpdateFriendForm extends React.Component {
 	};
 
 	render() {
-		console.log(this.props);
 		return (
 			<FormContainer>
-				<h2>Update a friend</h2>
+				<FormTitle>Update a friend</FormTitle>
 				<Form onSubmit={this.handleSubmit}>
 					<FormInput
 						onChange={this.handleInputChange}
@@ -71,7 +99,7 @@ class UpdateFriendForm extends React.Component {
 						name="email"
 						placeholder="Add Email"
 					/>
-					<FormButton type="submit">Update Friend</FormButton>
+					<Button type="submit">Update Friend</Button>
 				</Form>
 			</FormContainer>
 		);

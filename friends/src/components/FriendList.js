@@ -20,6 +20,10 @@ const FriendItem = styled.div`
   padding: 2rem 1rem;
 `;
 
+const Text = styled.p`
+  font-size: 1.6rem;
+`;
+
 const Button = styled.button`
   padding: 1rem 1.6rem;
   border: 0;
@@ -39,6 +43,7 @@ const Button = styled.button`
 
 const DeleteButton = styled(Button)`
   background: #F6546A;
+  color: #f9f9f9;
 `;
 
 
@@ -53,10 +58,10 @@ const FriendList = (props) => {
 			{props.friends.map((friend) => (
 				<FriendItem key={friend.id}>
 					<SubTitle>Name: {friend.name}</SubTitle>
-					<p>Age: {friend.age}</p>
-					<p>
+					<Text>Age: {friend.age}</Text>
+					<Text>
 						Email: <a href={`mailto:${friend.email}`}>{friend.email}</a>
-					</p>
+					</Text>
           <Button onClick={(event) => routeToItem(event, friend)}>View Friend</Button>
 					<DeleteButton onClick={() => props.deleteFriend(friend.id)}>Delete Friend</DeleteButton>
 				</FriendItem>

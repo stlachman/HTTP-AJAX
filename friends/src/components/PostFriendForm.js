@@ -37,7 +37,12 @@ const Button = styled.button`
 	font-size: 1.4rem;
 	font-weight: bold;
 	box-shadow: 3px 2px 2px 0px rgba(0, 0, 0, 0.3);
-	margin-top: 1.5rem;
+  margin-top: 1.5rem;
+  
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
 `;
 
 
