@@ -28,8 +28,9 @@ const Button = styled.button`
   padding: 1rem 1.6rem;
   border: 0;
 	border-radius: 0.5rem;
-	background: #eee;
-	font-size: 1.4rem;
+	background: #4D94F3;
+  font-size: 1.4rem;
+  color: #f9f9f9;
 	font-weight: bold;
 	box-shadow: 3px 2px 2px 0px rgba(0, 0, 0, 0.3);
   margin: 1.5rem 2rem 0;
