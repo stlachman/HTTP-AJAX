@@ -21,32 +21,33 @@ class UpdateFriendForm extends React.Component {
 		super(props);
 
 		this.state = {
-			friend: {
-				name: '',
-				age: '',
-				email: ''
-			}
+			friend: this.props.activeFriend
 		};
 	}
 
 	handleInputChange = (event) => {
-		this.setState({ 
-      friend: {
-        ...this.state.friend,
-        [event.target.name]: event.target.value 
-      }
-    });
+		event.persist();
+		let value = event.target.value;
+		if (event.target.name === ' age') {
+			value = parseInt(value, 10);
+		}
+		this.setState((prevState) => ({
+			friend: {
+				...prevState.friend,
+				[event.target.name]: value
+			}
+		}));
 	};
 
-  
-  handleEdit = (event) => {
-    event.preventDefault();
-    this.props.editFriend(this.state.friend)
-  }
+	handleSubmit = (event) => {
+		event.preventDefault();
+		this.props.updateFriend(this.state.friend);
+	};
 
 	render() {
+		console.log(this.props);
 		return (
-			<FormContainer onSubmit={this.handleEdit}>
+			<FormContainer>
 				<h2>Update a friend</h2>
 				<Form onSubmit={this.handleSubmit}>
 					<FormInput

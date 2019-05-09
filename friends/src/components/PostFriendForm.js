@@ -21,7 +21,7 @@ class PostFriendForm extends React.Component {
 		super(props);
 
 		this.state = {
-			friend: {
+			friend: this.props.activeFriend || {
 				name: '',
 				age: '',
 				email: ''
@@ -29,31 +29,49 @@ class PostFriendForm extends React.Component {
 		};
 	}
 
+	componentDidUpdate(prevProps) {
+		if (this.props.activeFriend && prevProps.activeFriend !== this.props.activeFriend) {
+			this.setState({
+				friend: this.props.activeFriend
+			});
+		}
+	}
+
 	handleInputChange = (event) => {
-		this.setState({ 
-      friend: {
-        ...this.state.friend,
-        [event.target.name]: event.target.value 
-      }
-    });
+		event.persist();
+
+		let value = event.target.value;
+		if (event.target.value === 'age') {
+			value = parseInt(value, 10);
+		}
+		this.setState((prevState) => ({
+			friend: {
+				...prevState.friend,
+				[event.target.name]: value
+			}
+		}));
 	};
 
 	handleSubmit = (event) => {
 		event.preventDefault();
-    this.props.postFriend(this.state.friend)
-    this.setState({ 
-      friend: {
-        name: '',
-        age: '',
-        email: ''
-      }
-    })
+		if (this.props.activeFriend) {
+			this.props.updateFriend(event, this.state.friend);
+		} else {
+			this.props.postFriend(this.state.friend);
+		}
+		this.setState({
+			friend: {
+				name: '',
+				age: '',
+				email: ''
+			}
+		});
 	};
 
 	render() {
 		return (
 			<FormContainer>
-				<h2>Add a new friend</h2>
+				<h2>{`${this.props.activeFriend ? 'Update' : 'Add New'} Friend`}</h2>
 				<Form onSubmit={this.handleSubmit}>
 					<FormInput
 						onChange={this.handleInputChange}
@@ -76,7 +94,8 @@ class PostFriendForm extends React.Component {
 						name="email"
 						placeholder="Add Email"
 					/>
-					<FormButton type="submit">Add Friend</FormButton>
+					{/* <FormButton type="submit">Add Friend</FormButton> */}
+					<FormButton>{`${this.props.activeFriend ? 'Update' : 'Add New'} Friend`}</FormButton>
 				</Form>
 			</FormContainer>
 		);
