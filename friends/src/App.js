@@ -88,7 +88,7 @@ class App extends React.Component {
 				/>
 				<Route
 					path="/add-friend"
-					render={(props) => <PostFriendForm postFriend={this.postFriend}/>}
+					render={(props) => <PostFriendForm {...props} postFriend={this.postFriend}/>}
 				/>
 				<Route
 					path="/update-friend"

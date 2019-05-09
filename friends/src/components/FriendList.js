@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import UpdateFriendForm from './UpdateFriendForm';
+
 
 const Container = styled.div`
 	max-width: 1200px;
@@ -27,7 +27,7 @@ const FriendList = (props) => {
 		<Container>
 			<Title>Friends List</Title>
 			{props.friends.map((friend) => (
-				<div>
+				<div key={friend.id}>
 					<SubTitle onClick={(ev) => routeToItem(ev, friend)}>Name: {friend.name}</SubTitle>
 					<p>Age: {friend.age}</p>
 					<p>
